@@ -1,3 +1,2 @@
 //Константи
-
-export const STORAGE_KEYS = {};
+export const STORAGE_CART_KEY = 'cart';
