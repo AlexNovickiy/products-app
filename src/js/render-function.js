@@ -53,3 +53,30 @@ export function removesProductsByCategory(category) {
     }
   });
 }
+
+export function renderModalProduct(product) {
+  refs.modalProduct.classList.add('modal--is-open');
+  const productContainer = refs.modalProduct.querySelector('.modal-product');
+  productContainer.innerHTML = `
+    <img class="modal-product__img" src="${product.images[0]}" alt="${
+    product.title
+  }" />
+      <div class="modal-product__content">
+        <p class="modal-product__title">${product.title}</p>
+        <ul class="modal-product__tags">
+          ${product.tags
+            .map(tag => `<li class="modal-product__tag">${tag}</li>`)
+            .join('')}
+        </ul>
+        <p class="modal-product__description">${product.description}</p>
+        <p class="modal-product__shipping-information">Shipping: ${
+          product.shipping
+        }</p>
+        <p class="modal-product__return-policy">Return Policy: ${
+          product.returnPolicy
+        }</p>
+        <p class="modal-product__price">Price: $${product.price}</p>
+        <button class="modal-product__buy-btn" type="button">Buy</button>
+      </div>
+  `;
+}
