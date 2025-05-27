@@ -9,7 +9,7 @@ import {
   onSearchFormSubmit,
   onBtnClearInputClick,
 } from './js/handlers';
-import { STORAGE_CART_KEY } from './js/constants.js';
+import { STORAGE_CART_KEY, STORAGE_WISHLIST_KEY } from './js/constants.js';
 
 //Логіка сторінки Home
 
@@ -17,6 +17,8 @@ renderCategoriesList();
 renderProductsList();
 refs.dataCartCount.textContent =
   JSON.parse(localStorage.getItem(STORAGE_CART_KEY))?.length || 0;
+refs.dataWishlistCount.textContent =
+  JSON.parse(localStorage.getItem(STORAGE_WISHLIST_KEY))?.length || 0;
 
 async function renderCategoriesList() {
   const categoriesList = await getProductsCategories();
