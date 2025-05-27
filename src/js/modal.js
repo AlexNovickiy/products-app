@@ -5,9 +5,14 @@ import {
   onModalCloseBtnClick,
   onBackDropClick,
   onModalProductBtnCartClick,
+  onModalProductBtnWishlistClick,
 } from './handlers.js';
 
 refs.productsList.addEventListener('click', onProductClick);
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtnClick);
 refs.modalProduct.addEventListener('click', onBackDropClick);
 refs.modalProductBtnCart.addEventListener('click', onModalProductBtnCartClick);
+refs.modalProductBtnWishlist.addEventListener(
+  'click',
+  onModalProductBtnWishlistClick
+);

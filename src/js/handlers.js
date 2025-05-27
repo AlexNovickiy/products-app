@@ -15,7 +15,11 @@ import {
 import {
   addProductToCartStorage,
   removeProductFromCartStorage,
+  addProductToWishlistStorage,
+  removeProductFromWishlistStorage,
 } from './storage.js';
+import { editCartCount } from '../cart.js';
+import { showLoader, hideLoader } from './helpers.js';
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -26,6 +30,7 @@ export async function onCategoryClick(event) {
   if (event.target.tagName !== 'BUTTON') return;
   const btnCategory = event.target;
   const targetCategory = btnCategory.textContent.trim().toLowerCase();
+  refs.notFound.classList.remove('not-found--visible');
 
   // Якщо натиснули "all"
   if (targetCategory === 'all') {
@@ -81,6 +86,13 @@ export async function onProductClick(event) {
     refs.modalProductBtnCart.textContent = 'Add to cart';
     refs.modalProductBtnCart.dataset.inCart = 'false';
   }
+  if (JSON.parse(localStorage.getItem('wishlist'))?.includes(productId)) {
+    refs.modalProductBtnWishlist.textContent = 'Remove from wishlist';
+    refs.modalProductBtnWishlist.dataset.inWishlist = 'true';
+  } else {
+    refs.modalProductBtnWishlist.textContent = 'Add to wishlist';
+    refs.modalProductBtnWishlist.dataset.inWishlist = 'false';
+  }
 }
 
 export function onModalCloseBtnClick() {
@@ -95,17 +107,20 @@ export function onBackDropClick(event) {
 
 export async function onSearchFormSubmit(event) {
   event.preventDefault();
+  showLoader();
   const searchQuery = event.target.elements.searchValue.value
     .trim()
     .toLowerCase();
   if (!searchQuery) {
-    refs.notFound.classList.add('not-found--visible');
     return;
   }
 
   const products = await getProductsByQuery(searchQuery);
   refs.productsList.innerHTML = '';
   if (products.length === 0) {
+    setTimeout(() => {
+      hideLoader();
+    }, 200);
     refs.notFound.classList.add('not-found--visible');
     return;
   } else {
@@ -132,7 +147,7 @@ export function onModalProductBtnCartClick(event) {
     iziToast.success({
       title: 'Success',
       message: 'Product added to cart',
-      position: 'topRight',
+      position: 'bottomRight',
     });
     btn.textContent = 'Remove from cart';
     btn.dataset.inCart = 'true';
@@ -141,7 +156,7 @@ export function onModalProductBtnCartClick(event) {
     iziToast.success({
       title: 'Success',
       message: 'Product removed from cart',
-      position: 'topRight',
+      position: 'bottomRight',
     });
     btn.textContent = 'Add to cart';
     btn.dataset.inCart = 'false';
@@ -150,4 +165,45 @@ export function onModalProductBtnCartClick(event) {
   refs.dataCartCount.textContent = JSON.parse(
     localStorage.getItem('cart')
   ).length;
+  editCartCount();
+}
+
+export function onModalProductBtnWishlistClick(event) {
+  event.preventDefault();
+  const btn = event.target;
+
+  const isInWishlist = btn.dataset.inWishlist === 'true';
+
+  if (!isInWishlist) {
+    addProductToWishlistStorage(productId);
+    iziToast.success({
+      title: 'Success',
+      message: 'Product added to wishlist',
+      position: 'bottomRight',
+    });
+    btn.textContent = 'Remove from wishlist';
+    btn.dataset.inWishlist = 'true';
+  } else {
+    removeProductFromWishlistStorage(productId);
+    iziToast.success({
+      title: 'Success',
+      message: 'Product removed from wishlist',
+      position: 'bottomRight',
+    });
+    btn.textContent = 'Add to wishlist';
+    btn.dataset.inWishlist = 'false';
+  }
+
+  refs.dataWishlistCount.textContent = JSON.parse(
+    localStorage.getItem('wishlist')
+  ).length;
+}
+
+export function onBtnCartSummaryClick() {
+  iziToast.info({
+    title: 'Cart Summary',
+    message: `You bought ${refs.cartSummaryCount.textContent} items for a total of ${refs.cartSummaryPrice.textContent}.`,
+    timeout: 5000,
+    position: 'bottomRight',
+  });
 }

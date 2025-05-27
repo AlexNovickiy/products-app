@@ -1,5 +1,6 @@
 //Функції  для створення, рендеру або видалення розмітки
 import { refs } from './refs.js';
+import { showLoader, hideLoader } from './helpers.js';
 
 export function renderFunctionCategories(categoriesList) {
   refs.categoriesList.innerHTML = categoriesList
@@ -12,6 +13,7 @@ export function renderFunctionCategories(categoriesList) {
 }
 
 export function renderFunctionProducts(productsList) {
+  showLoader();
   refs.productsList.innerHTML = productsList
     .map(product => {
       return `<li class="products__item" data-id="${product.id}">
@@ -24,9 +26,13 @@ export function renderFunctionProducts(productsList) {
 `;
     })
     .join('');
+  setTimeout(() => {
+    hideLoader();
+  }, 200);
 }
 
 export function appendFunctionProducts(productsList) {
+  showLoader();
   refs.productsList.insertAdjacentHTML(
     'beforeend',
     productsList
@@ -42,6 +48,9 @@ export function appendFunctionProducts(productsList) {
       })
       .join('')
   );
+  setTimeout(() => {
+    hideLoader();
+  }, 200);
 }
 
 export function removesProductsByCategory(category) {
