@@ -10,6 +10,8 @@ import {
   onModalProductBtnCartClick,
   onModalProductBtnWishlistClick,
   onBtnCartSummaryClick,
+  onScrollUpBtnClick,
+  onScrollToMiddleShowScrollUpBtn,
 } from './js/handlers';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -51,3 +53,7 @@ export function editCartCount() {
     });
   }
 }
+
+refs.scrollToTopBtn.addEventListener('click', onScrollUpBtnClick);
+
+document.addEventListener('scroll', onScrollToMiddleShowScrollUpBtn);

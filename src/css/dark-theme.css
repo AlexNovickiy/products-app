@@ -1,0 +1,178 @@
+body.dark-theme {
+  background-color: #181a1b;
+  color: #f1f1f1;
+}
+
+body.dark-theme .header,
+body.dark-theme .cart-summary,
+body.dark-theme .not-found,
+body.dark-theme .products__item,
+body.dark-theme .modal__content {
+  background: #23272a;
+  color: #f1f1f1;
+}
+
+body.dark-theme .products__item,
+body.dark-theme .cart-summary,
+body.dark-theme .not-found,
+body.dark-theme .modal__content {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+body.dark-theme .products__title,
+body.dark-theme .cart-summary__title,
+body.dark-theme .modal-product__title {
+  color: #ffb86c;
+}
+
+body.dark-theme .products__price,
+body.dark-theme .cart-summary__value:not(:last-child) {
+  color: #ffb86c;
+}
+
+body.dark-theme .categories__btn {
+  background: #23272a;
+  color: #f1f1f1;
+  border-color: #444;
+}
+body.dark-theme .categories__btn--active {
+  background: #ff6b0a;
+  color: #fff;
+  border-color: #ff6b0a;
+}
+
+body.dark-theme .modal-product__btn--wishlist {
+  background: #23272a;
+  color: #ffb86c;
+  border-color: #ffb86c;
+}
+body.dark-theme .modal-product__btn--cart {
+  background: #ffb86c;
+  color: #23272a;
+}
+body.dark-theme .modal-product__btn--cart:hover {
+  background: #ff6b0a;
+  color: #fff;
+}
+body.dark-theme .modal-product__btn--wishlist:hover {
+  background: #23272a;
+  color: #ff6b0a;
+  border-color: #ff6b0a;
+}
+body.dark-theme .modal__close-btn::after {
+  color: #ffb86c;
+}
+body.dark-theme .modal__close-btn:hover::after {
+  color: #ff6b0a;
+}
+body.dark-theme .search-form__input {
+  background: #23272a;
+  color: #f1f1f1;
+}
+body.dark-theme .search-form__input:focus {
+  background: #181a1b;
+}
+body.dark-theme .search-form__btn {
+  background: #ffb86c;
+  color: #23272a;
+}
+body.dark-theme .search-form__btn:hover,
+body.dark-theme .search-form__btn:focus {
+  background: #ff6b0a;
+  color: #fff;
+}
+body.dark-theme .cart-summary__btn {
+  background: #ffb86c;
+  color: #23272a;
+}
+body.dark-theme .cart-summary__btn:hover {
+  background: #ff6b0a;
+  color: #fff;
+}
+body.dark-theme .nav__count {
+  background: #23272a;
+  color: #ffb86c;
+  border-color: #ffb86c;
+}
+body.dark-theme .nav__link:hover .nav__count,
+body.dark-theme .nav__link:focus .nav__count,
+body.dark-theme .nav__link.nav__link--active .nav__count {
+  background: #ffb86c;
+  color: #23272a;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus {
+  background: rgba(255, 107, 10, 0.12);
+}
+
+.theme-toggle__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+
+.theme-toggle__icon::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffb300;
+  box-shadow:
+    0 -10px 0 -6px #ffb300,
+    0 10px 0 -6px #ffb300,
+    10px 0 0 -6px #ffb300,
+    -10px 0 0 -6px #ffb300,
+    7px 7px 0 -6px #ffb300,
+    -7px 7px 0 -6px #ffb300,
+    7px -7px 0 -6px #ffb300,
+    -7px -7px 0 -6px #ffb300;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Луна (темна тема) */
+body.dark-theme .theme-toggle__icon::before {
+  background: #f1f1f1;
+  box-shadow: none;
+}
+
+body.dark-theme .theme-toggle__icon::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background: #181a1b;
+  border-radius: 50%;
+  box-shadow: none;
+  transition: background 0.3s;
+}
+
+.theme-toggle__icon::after {
+  content: '';
+  display: none;
+}
+
+
+.theme-toggle-btn:active .theme-toggle__icon::before {
+  transform: scale(0.92);
+}
