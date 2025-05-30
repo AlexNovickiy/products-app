@@ -16,5 +16,5 @@
   -webkit-text-size-adjust: 100%;
 }
 body {
-  height: auto;
+  height: minmax(100vh, 100%);
 }
