@@ -17,6 +17,7 @@ import {
   removeProductFromCartStorage,
   addProductToWishlistStorage,
   removeProductFromWishlistStorage,
+  addThemeToStorage,
 } from './storage.js';
 import { editCartCount } from '../cart.js';
 import { showLoader, hideLoader } from './helpers.js';
@@ -206,4 +207,24 @@ export function onBtnCartSummaryClick() {
     timeout: 5000,
     position: 'bottomRight',
   });
+}
+
+export function onScrollUpBtnClick() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}
+
+export function onScrollToMiddleShowScrollUpBtn() {
+  if (window.scrollY > window.innerHeight / 2) {
+    refs.scrollToTopBtn.classList.add('show-scroll-up-btn');
+  } else {
+    refs.scrollToTopBtn.classList.remove('show-scroll-up-btn');
+  }
+}
+
+export function onBtnChangeThemeClick() {
+  document.body.classList.toggle('dark-theme');
+  addThemeToStorage();
 }

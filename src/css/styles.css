@@ -12,6 +12,7 @@
 @import url('./section.css');
 @import url('./animations.css');
 @import url('./loader.css');
+@import url('./dark-theme.css');
 
 /* Sections style */
 @import url('./header.css');

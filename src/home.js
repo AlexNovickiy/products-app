@@ -8,6 +8,8 @@ import {
   onCategoryClick,
   onSearchFormSubmit,
   onBtnClearInputClick,
+  onScrollUpBtnClick,
+  onScrollToMiddleShowScrollUpBtn,
 } from './js/handlers';
 import { STORAGE_CART_KEY, STORAGE_WISHLIST_KEY } from './js/constants.js';
 
@@ -36,3 +38,7 @@ refs.searchForm.addEventListener('submit', onSearchFormSubmit);
 refs.searchForm
   .querySelector('.search-form__btn-clear')
   .addEventListener('click', onBtnClearInputClick);
+
+refs.scrollToTopBtn.addEventListener('click', onScrollUpBtnClick);
+
+document.addEventListener('scroll', onScrollToMiddleShowScrollUpBtn);

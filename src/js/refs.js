@@ -17,4 +17,6 @@ export const refs = {
   cartSummaryCount: document.querySelector('.cart-summary__value[data-count]'),
   cartSummaryBtn: document.querySelector('.cart-summary__btn'),
   loader: document.querySelector('.loader-wrapper'),
+  scrollToTopBtn: document.querySelector('.wrapper-scroll-up-btn'),
+  btnChangeTheme: document.querySelector('.theme-toggle-btn'),
 };

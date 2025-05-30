@@ -82,3 +82,44 @@
     color: #e05a00;
   }
 }
+
+.wrapper-scroll-up-btn {
+  position: fixed;
+  bottom: 9%;
+  right: 8%;
+  z-index: 1000;
+  width: 60px;
+  height: 60px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: 2px solid transparent;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: border-color 0.2s ease-in-out;
+
+  &:hover {
+    border-color: orange;
+  }
+}
+
+.show-scroll-up-btn {
+  display: flex;
+}
+
+.btn-scroll-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 107, 10, 0.8);
+  color: white;
+  border: none;
+}
+
+.wrapper-scroll-up-btn:hover .btn-scroll-up {
+  background-color: rgba(255, 107, 10, 1);
+  animation: zoomIn 0.2s ease-in-out;
+}
