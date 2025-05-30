@@ -7,18 +7,23 @@
     <title>Wishlist</title>
     <script type="module" crossorigin src="/products-app/wishlist.js"></script>
     <link rel="modulepreload" crossorigin href="/products-app/assets/vendor-Cbhu4xvy.js">
-    <link rel="modulepreload" crossorigin href="/products-app/assets/handlers-DWTb8jRE.js">
+    <link rel="modulepreload" crossorigin href="/products-app/assets/theme-Lebg2Fgs.js">
     <link rel="stylesheet" crossorigin href="/products-app/assets/vendor-DnveWo0P.css">
-    <link rel="stylesheet" crossorigin href="/products-app/assets/handlers-BbMgJlDH.css">
+    <link rel="stylesheet" crossorigin href="/products-app/assets/theme-BIY-vuUd.css">
   </head>
   <body>
     <header class="header">
   <div class="container header__container">
-    <a class="logo" href="./index.html" aria-label="Site logo">
-      <svg class="logo__icon" width="100" height="30">
-        <use href="/products-app/assets/sprite-E8vg0sBb.svg#logo"></use>
-      </svg>
-    </a>
+    <div class="header__logo__wrapper">
+      <a class="logo" href="./index.html" aria-label="Site logo">
+        <svg class="logo__icon" width="100" height="30">
+          <use href="/products-app/assets/sprite-E8vg0sBb.svg#logo"></use>
+        </svg>
+      </a>
+      <button class="theme-toggle-btn" type="button" aria-label="Toggle theme">
+        <span class="theme-toggle__icon"></span>
+      </button>
+    </div>
 
     <form class="search-form">
       <input
@@ -65,6 +70,7 @@
     <main>
       <section class="section">
         <div class="container">
+          <div class="loader-wrapper"></div>
           <ul class="products"></ul>
           <div class="not-found">
             <div class="not-found__icon">
@@ -88,6 +94,9 @@
               We couldn't find any items matching your search.<br />Please try
               different keywords.
             </p>
+          </div>
+          <div class="wrapper-scroll-up-btn">
+            <button class="btn-scroll-up" type="button">⮝</button>
           </div>
         </div>
       </section>
